@@ -19,7 +19,7 @@ class C(A):
 
 
 class D(B, C):
-
+    #super().print_name()
     pass
 
 

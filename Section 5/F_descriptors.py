@@ -63,7 +63,7 @@ class Verbose_attribute():
     def __get__(self, obj, type=None) -> object:
         print("accessing the attribute to get the value")
 
-        return self
+        return 42
 
     def __set__(self, obj, value) -> None:
         print("accessing the attribute to set the value")
@@ -76,5 +76,30 @@ class Foo():
 
 my_foo_object = Foo()
 print(my_foo_object.attribute1)
-# my_foo_object.attribute1 = 32
-# print(my_foo_object.attribute1)
+my_foo_object.attribute1 = 32
+print(my_foo_object.attribute1)
+
+####################################
+import types
+
+class Function(object):
+
+    def __get__(self,obj, objtype=None):
+        '''Simulate func_descr_get() in Objects/funcobject.c'''
+        if obj is None:
+            return self
+        return types.MethodType(self,obj)
+
+class Vehicle():
+    can_fly = False
+    number_of_weels = 0
+
+class Car(Vehicle):
+    number_of_weels = 4
+
+    def __init__(self,color):
+        self.color = color
+
+my_car = Car('red')
+print(my_car.__dict__)
+print(type(my_car).__dict__)

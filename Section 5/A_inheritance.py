@@ -41,7 +41,7 @@ child.implicit()  # we'll inherit directly from the Parent class
 
 print("Parent override:")
 parent.override()
-#
+
 print("Child override")
 child.override()  # we override the parent class. We want the functionality of this class to behave differently
 child.altered()  # note that when I call super I can change the attributes in the child class!
